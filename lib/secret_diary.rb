@@ -3,18 +3,14 @@
 class SecretDiary
   def initialize(diary) # diary is an instance of Diary
     @my_secret_diary = diary
-    @locked = false
+    @locked = true
   end
 
   def read
     # Raises the error "Go away!" if the diary is locked
     # Returns the diary's contents if the diary is unlocked
     # The diary starts off locked
-    if @locked == false
-      @my_secret_diary.instance_variable_get(:@contents)
-    else
-      "Go away!"
-    end
+    @locked == false ? @my_secret_diary.read : "Go away!"
   end
 
   def lock
@@ -26,5 +22,6 @@ class SecretDiary
   def unlock
     # Unlocks the diary
     # Returns nothing
+    @locked = false
   end
 end

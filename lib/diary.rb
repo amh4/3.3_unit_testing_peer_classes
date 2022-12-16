@@ -6,6 +6,6 @@ class Diary
   end
 
   def read
-    # Returns the contents of the diary
+    @contents
   end
 end

@@ -5,6 +5,7 @@ RSpec.describe "Integration Test" do
   it "takes diary entry and adds it to secret diary" do
     my_diary = Diary.new("Contents to be made a secret")
     my_secret_diary = SecretDiary.new(my_diary)
+    my_secret_diary.unlock
     expect(my_secret_diary.read).to eq "Contents to be made a secret"
   end
   
@@ -13,5 +14,13 @@ RSpec.describe "Integration Test" do
     my_secret_diary = SecretDiary.new(my_diary)
     my_secret_diary.lock
     expect(my_secret_diary.read).to eq "Go away!"
+  end
+
+  it "diary returns contents if it is unlocked" do
+    my_diary = Diary.new("Contents to be made a secret")
+    my_secret_diary = SecretDiary.new(my_diary)
+    my_secret_diary.lock
+    my_secret_diary.unlock
+    expect(my_secret_diary.read).to eq "Contents to be made a secret"
   end
 end
