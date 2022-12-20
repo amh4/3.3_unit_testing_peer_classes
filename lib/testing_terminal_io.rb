@@ -10,7 +10,6 @@ class StringRepeater
     @terminal.puts "Please enter a number of repeats"
     user_repeat = @terminal.gets.to_i
     @terminal.puts "Here is your result:"
-    #user_repeat.times{@terminal.puts user_string}
     @terminal.puts user_string * user_repeat
   end
 end
